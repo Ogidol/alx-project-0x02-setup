@@ -1,8 +1,7 @@
-import Header from "@/components/layout/Header";
-const home = () => {
+const home: React.FC = () => {
   return (
     <div>
-      <h1></h1>
+      <h1>home</h1>
     </div>
   );
 };
