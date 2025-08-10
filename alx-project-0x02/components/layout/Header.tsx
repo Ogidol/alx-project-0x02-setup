@@ -1,23 +1,21 @@
-import Link from "next/link";
+import Link from "next/link"; // Lets us navigate without refreshing
+import React from "react";
 
 const Header: React.FC = () => {
   return (
-    <header className="bg-blue-600 text-white shadow-md py-4">
-      <div className="container mx-auto flex justify-between items-center px-4">
-        <h3 className="font-bold text-2xl">
-          <Link href="/">Daily Contents</Link>
-        </h3>
-        <nav>
-          <ul className="flex space-x-6">
-            <li className="hover:underline">
-              <Link href="/home">Posts</Link>
-            </li>
-            <li className="hover:underline">
-              <Link href="/about">Users</Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
+    <header className="bg-gray-800 text-white p-4">
+      <nav className="flex gap-6">
+        {/* Each Link navigates to a page */}
+        <Link href="/home" className="hover:underline">
+          Home
+        </Link>
+        <Link href="/about" className="hover:underline">
+          About
+        </Link>
+        <Link href="/posts" className="hover:underline">
+          Posts
+        </Link>
+      </nav>
     </header>
   );
 };
