@@ -1,16 +1,37 @@
 import React from "react";
-import Header from "@/components/layout/Header";
+import { PostProps } from "@/interfaces";
+import PostCard from "@/components/common/PostCard";
 
-const Posts: React.FC = () => {
+interface PostsPageProps {
+  posts: PostProps[];
+}
+
+const Posts: React.FC<PostsPageProps> = ({ posts = [] }) => {
   return (
-    <div>
-      <Header />
-      <main className="p-8">
-        <h1 className="text-3xl font-bold">Posts</h1>
-        <p className="mt-4">List of posts will appear here.</p>
-      </main>
+    <div className="p-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+      {posts.map((post) => (
+        <PostCard
+          key={post.id}
+          title={post.title}
+          body={post.body}
+          userId={post.userId}
+          id={post.id}
+        />
+      ))}
     </div>
   );
 };
+
+// Next.js static props
+export async function getStaticProps() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const posts: PostProps[] = await res.json();
+
+  return {
+    props: {
+      posts,
+    },
+  };
+}
 
 export default Posts;
