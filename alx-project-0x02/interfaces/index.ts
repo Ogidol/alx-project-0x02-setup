@@ -22,3 +22,21 @@ export interface ButtonProps {
   label: string;
   onClick: () => void;
 }
+
+export interface PostProps {
+  id: number;
+  title: string;
+  body: string; // 'content' in instructions is usually 'body' from API
+  userId: number;
+}
+export interface UserProps {
+  id: number;
+  name: string;
+  email: string;
+  address: {
+    street: string;
+    suite: string;
+    city: string;
+    zipcode: string;
+  };
+}
